@@ -22,7 +22,26 @@ export default function Home() {
       message,
     };
 
-    console.log(form);
+    // console.log(form);
+
+    const response = await fetch("api/submit", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    const content = await response.json();
+    console.log(content);
+
+    alert(content.data.tableRange);
+
+    setName("");
+    setEmail("");
+    setPhone("");
+    setMessage("");
     //todo submit via API
   };
 
